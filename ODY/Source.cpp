@@ -25,7 +25,7 @@ double delt(double x, double y,double h)
 }
 double func_proiz_2(double x, double y,double y_1)
 {
-	double rez = (x*y*y*y*y - 2 - func(x, y)*(2 * x + x*x*y*y*y))/(x*x*x*y*y*y);
+	double rez = (x*y*y*y*y - 2*y - func(x, y)*(2 * x + x*x*y*y*y))/(x*x*x*y*y*y);
 	return rez;
 }
 double func_proiz_3(double x, double y, double y_1, double y_2)
@@ -43,7 +43,7 @@ double formula_2(double h, double y_i, double y_im1, double y_im2, double y_2_i,
 }
 decltype(auto) method_1(double x0, double y0, double h, double eps, int n)
 {
-	vector<vector<double>> otrezok(n+1);
+	vector<vector<double>> otrezok(n);
 	for (auto& x : otrezok)
 	{
 		x.resize(4);
@@ -62,7 +62,7 @@ decltype(auto) method_1(double x0, double y0, double h, double eps, int n)
 	vector<double>priblijenie_1(4);
 	vector<double>priblijenie_2(4);
 	vector<double>priblijenie_3(4);
-	for (int i = 2; i < n; i++)
+	for (int i = 2; i < n-1; i++)
 	{
 		while (true)
 		{
@@ -118,7 +118,7 @@ double formula_2_3(double yi, double y_1_ip1, double y_1_i, double y_2_ip1, doub
 }
 decltype(auto) method_2(double x0, double y0, double h, double eps, int n)
 {
-	vector<vector<double>> otrezok(n+1);
+	vector<vector<double>> otrezok(n);
 	for (auto& x : otrezok)
 		x.resize(5);
 	otrezok[0][0] = x0;
@@ -137,7 +137,7 @@ decltype(auto) method_2(double x0, double y0, double h, double eps, int n)
 	vector<double>priblijenie_1(5);
 	vector<double>priblijenie_2(5);
 	vector<double>priblijenie_3(5);
-	for (int i = 2; i < n; i++)
+	for (int i = 2; i < n-1; i++)
 	{
 		while (true)
 		{
@@ -250,6 +250,7 @@ int main()
 		cout << fabs(original_func(otrezok[i][0]) - otrezok[i][1])<<"|";
 		cout << endl;
 	}
+	cout << "|-----------------|-----------------|-----------------|-----------------|-----------------|----------------|-----------------|" << endl;
 	system("pause");
 
 }
