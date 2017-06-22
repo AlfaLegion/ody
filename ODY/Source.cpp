@@ -43,7 +43,7 @@ double formula_2(double h, double y_i, double y_im1, double y_im2, double y_2_i,
 }
 decltype(auto) method_1(double x0, double y0, double h, double eps, int n)
 {
-	vector<vector<double>> otrezok(n);
+	vector<vector<double>> otrezok(n+1);
 	for (auto& x : otrezok)
 	{
 		x.resize(4);
@@ -62,7 +62,7 @@ decltype(auto) method_1(double x0, double y0, double h, double eps, int n)
 	vector<double>priblijenie_1(4);
 	vector<double>priblijenie_2(4);
 	vector<double>priblijenie_3(4);
-	for (int i = 2; i < n - 1; i++)
+	for (int i = 2; i < n; i++)
 	{
 		while (true)
 		{
@@ -118,7 +118,7 @@ double formula_2_3(double yi, double y_1_ip1, double y_1_i, double y_2_ip1, doub
 }
 decltype(auto) method_2(double x0, double y0, double h, double eps, int n)
 {
-	vector<vector<double>> otrezok(n);
+	vector<vector<double>> otrezok(n+1);
 	for (auto& x : otrezok)
 		x.resize(5);
 	otrezok[0][0] = x0;
@@ -137,7 +137,7 @@ decltype(auto) method_2(double x0, double y0, double h, double eps, int n)
 	vector<double>priblijenie_1(5);
 	vector<double>priblijenie_2(5);
 	vector<double>priblijenie_3(5);
-	for (int i = 2; i < n - 1; i++)
+	for (int i = 2; i < n; i++)
 	{
 		while (true)
 		{
@@ -213,7 +213,7 @@ int main()
 	cout << "|-----------------|-----------------|-----------------|-----------------|----------------|-----------------|" << endl;
 	auto old=cout.setf(ios_base::fixed, ios_base::floatfield | ios_base::adjustfield);
 	cout.precision(12);
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < gg.size(); i++)
 	{
 		cout << "|";
 		for (int j = 0; j < 4; j++)
@@ -236,7 +236,7 @@ int main()
 	cout << "|-----------------|-----------------|-----------------|-----------------|-----------------|----------------|-----------------|" << endl;
 	cout.setf(ios_base::fixed, ios_base::floatfield | ios_base::adjustfield);
 	cout.precision(12);
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < otrezok.size(); i++)
 	{
 		cout << "|";
 		for (int j = 0; j < 5; j++)
